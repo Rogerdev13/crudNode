@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD APLICATION NODE JS </title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+                <div class="container">
+                    <a href="/" class="navbar-brand">APLICATION NODE JS</a>
+                </div>
+            </nav>
+
+        
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-md-7">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Name</th>
+                                    <th>Adress</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                  
+                        <tbody>
+                            <% if(data){ %>
+                                <% for(let i = 0 ; i < data.length ; i++){ %>
+                                    <tr>
+                                        <td><%= (i + 1) %></td>
+                                        <td><%= data[i].name %></td>
+                                        <td><%= data[i].adress %></td>
+                                        <td><%= data[i].phone %></td>
+                                        <td> <a href="/edit/<%= data[i].id %>" class="btn btn-primary">Edit</a> <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Remove</a></td>
+                                    </tr>
+
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/add" method="POST" >
+                                    <div class="form-group">
+                                        <input placeholder="Type your name :" name="name" type="text" class="form-control mb-3 ">
+                                    </div>
+                                    <div class="form-group">
+                                        <input placeholder="Type your adress :" name="adress" type="text" class="form-control mb-3">
+                                    </div>
+                                    <div class="form-group">
+                                        <input placeholder="Type your phone number :" name="number" type="text" class="form-control mb-3">
+                                    </div>
+                                    <button class="btn btn-dark" type="submit">Save User</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
+
